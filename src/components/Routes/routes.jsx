@@ -8,7 +8,7 @@ import CreateSurvey from '../Home/CreateSurvey'
 
 
 
-function routes() {
+function Routes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
@@ -20,4 +20,4 @@ function routes() {
   )
 }
 
-export default routes
+export default Routes
