@@ -1,20 +1,23 @@
-import { Route, Routes as RouterRoutes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Survey from '../Home/Survey'
 import HomePage from "../Home/HomePage"
-import App from "../App/App"
+import SurveyForm from '../Home/SurveyForm'
+import CreateSurvey from '../Home/CreateSurvey'
 
 
 
-const Routes = () => {
+import React from 'react'
 
+function routes() {
   return (
-    <RouterRoutes>
+    <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/CreateSurvey" element={<CreateSurvey/>}/>
       <Route path="/Survey" element={<Survey  />} />
-      <Route path="/App" element={<App  />} />
+      <Route path="/SurveyForm" element={<SurveyForm/>}/>
       <Route path="*" element={<PageNotFound />} />
-    </RouterRoutes>
+    </Routes>
   )
 }
 
-export default Routes
+export default routes

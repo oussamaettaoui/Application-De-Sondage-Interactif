@@ -1,12 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-const Survey = () => {
+function Survey() {
   return (
-    <div>
-      <h2>Sondage</h2>
-      {/* Afficher un sondage spécifique */}
-    </div>
-  );
+    <div>Survey</div>
+  )
 }
 
-export default Survey;
+export default Survey

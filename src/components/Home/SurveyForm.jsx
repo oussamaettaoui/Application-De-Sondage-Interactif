@@ -1,12 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-const SurveyForm = () => {
+function SurveyForm() {
   return (
-    <div>
-      <h2>Formulaire de Sondage</h2>
-      {/* Formulaire contrôlé pour recueillir les réponses */}
-    </div>
-  );
+    <div>SurveyForm</div>
+  )
 }
 
-export default SurveyForm;
+export default SurveyForm

@@ -1,16 +1,16 @@
-import Routes from "../Routes/routes";
-import HomePage from "../Home/HomePage";
+import Routes from "../Routes/Routes";
 import NavBar from "../Header/NavBar";
+import { BrowserRouter } from "react-router-dom";
 
-const App = () => {
+
+
+function App() {
   return (
-    <>
-      <NavBar />
-      <HomePage />
+    <BrowserRouter>
+      <NavBar/>
+      <Routes/>
+    </BrowserRouter>
+  )
+}
 
-      <Routes />
-    </>
-  );
-};
-
-export default App;
+export default App
