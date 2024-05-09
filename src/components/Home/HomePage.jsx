@@ -22,7 +22,7 @@ function HomePage() {
                 <div className='flexBox gap-16 mt-14'>
                   <Link to=''><div className='primaryEmeraldBtn animationBtn'>Survey Report</div></Link>
                   <Link to=''><div className='primaryGreenBtn animationBtn'>Answer Survey</div></Link>
-                </div>q
+                </div>
               </div>
               <div className='w-96 h-64'><img className='w-full h-full' src={survey.img} alt={survey.title} /></div>
             </div>

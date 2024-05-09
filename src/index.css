@@ -13,7 +13,7 @@ body{
   background: black;
   color: white;
 }
-.navFlex {
+.FlexBetween {
   @apply flex justify-between items-center
 }
 .primaryGreenBtn {
@@ -27,4 +27,7 @@ body{
 }
 .animationBtn {
   @apply hover:-translate-y-1 hover:scale-110
+}
+.card{
+  @apply bg-white text-black shadow-md rounded-md
 }
