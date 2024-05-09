@@ -5,7 +5,10 @@ répondre à des sondages.
 
 To add React Router in your application :
 
-npm i -D react-router-dom@latest
+- npm i -D react-router-dom@latest
+- npm install @mui/material @emotion/react @emotion/styled 
+- npm install @mui/material @mui/icons-material
+
 
 # React + Vite
 
