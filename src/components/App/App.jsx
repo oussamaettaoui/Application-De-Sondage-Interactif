@@ -28,7 +28,6 @@ function App() {
           <div>
           <h1>{srv.qs}</h1>
           </div>
-          
         );
       })}
     </BrowserRouter>
