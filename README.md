@@ -7,8 +7,10 @@ To add React Router in your application :
 
 npm i -D react-router-dom@latest
 
-to add reactIcons library for icons
+to add reactIcons library for icons : 
+
 npm install react-icons --save
+
 npm install @react-icons/all-files --save
 
 # React + Vite
