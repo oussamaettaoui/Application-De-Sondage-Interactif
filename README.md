@@ -7,6 +7,9 @@ To add React Router in your application :
 
 npm i -D react-router-dom@latest
 
+to add fortawesome library for icons
+npm i --save @fortawesome/fontawesome-svg-core
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

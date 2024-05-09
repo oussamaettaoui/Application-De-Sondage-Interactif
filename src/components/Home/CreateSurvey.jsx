@@ -5,17 +5,17 @@ function CreateSurvey() {
   const [option,setOption] = useState('')
   const [options,setOptions] = useState([])
   const addOption = ()=>{
-    const option = {
+    const optionObj = {
       id : Date.now(),
-      option : option,
+      option : option.trim(),
       count : 0
     }
-    options.push(option)
+    options.push(optionObj)
     setOption('')
   }
   return (
     <div>
-      <InputBox option={option} setOption={setOption} options={options}/>
+      <InputBox option={option} addOption={addOption} setOption={setOption} options={options}/>
     </div>
   )
 }

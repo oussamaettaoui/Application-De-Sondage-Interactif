@@ -29,5 +29,11 @@ body{
   @apply hover:-translate-y-1 hover:scale-110
 }
 .card{
-  @apply bg-white text-black shadow-md rounded-md
+  @apply w-96 bg-white text-black shadow-md rounded-md
+}
+.option{
+  @apply w-fit border py-1.5 px-3 rounded-full
+}
+.closeIcon{
+  
 }
