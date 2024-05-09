@@ -19,6 +19,12 @@ body{
 .primaryGreenBtn {
   @apply w-max h-max bg-green-500 px-4 py-2 rounded hover:bg-green-600 transition duration-500 ease-in-out
 }
+.primaryEmeraldBtn {
+  @apply w-max h-max bg-emerald-500 px-4 py-2 rounded hover:bg-emerald-600 transition duration-500 ease-in-out
+}
 .flexBox {
-  @apply flex justify-between items-center
+  @apply flex justify-center items-center
+}
+.animationBtn {
+  @apply hover:-translate-y-1 hover:scale-110
 }
