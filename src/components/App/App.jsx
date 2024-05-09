@@ -20,8 +20,14 @@ function App() {
   return (
     <>
     <BrowserRouter>
+
       <NavBar/>
       <Routes/>
+
+      {/* <NavBar/> */}
+      <SurveyForm/>
+      {/* <Routes/> */}
+
     </BrowserRouter>
     </>
   )
