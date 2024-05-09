@@ -8,7 +8,7 @@ import CreateSurvey from '../Home/CreateSurvey'
 
 
 
-function Routes() {
+export default function Routing() {
   return (
     <RouterRoutes>
       <Route path="/" element={<HomePage />} />
@@ -18,5 +18,3 @@ function Routes() {
     </RouterRoutes>
   )
 }
-
-export default Routes
