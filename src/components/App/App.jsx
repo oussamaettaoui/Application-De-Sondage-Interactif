@@ -1,4 +1,3 @@
-
 import NavBar from "../Header/NavBar";
 import { BrowserRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -21,6 +20,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
+
       <NavBar/>
       <Routing />
       {surveys.map((srv) => {
@@ -28,6 +28,7 @@ function App() {
           <div>
           <h1>{srv.qs}</h1>
           </div>
+          
         );
       })}
     </BrowserRouter>
