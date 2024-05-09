@@ -10,6 +10,15 @@
   text-decoration: none;
 }
 body{
-  font-family: serif;
-  font-size: 1.2rem;
+  background: black;
+  color: white;
+}
+.navFlex {
+  @apply flex justify-between items-center
+}
+.primaryGreenBtn {
+  @apply w-max h-max bg-green-500 px-4 py-2 rounded hover:bg-green-600 transition duration-500 ease-in-out
+}
+.flexBox {
+  @apply flex justify-between items-center
 }
