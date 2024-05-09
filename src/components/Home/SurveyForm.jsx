@@ -1,71 +1,21 @@
 import React, { useState } from 'react';
+import './SurveyForm.css';
 
-const data = [
-  {
-    title: "This is a Survey",
-    description: "This is a Survey This is a Survey This is a Survey This is a Survey This is a Survey This is a Survey",
-    img : "../../../public/linkden.jpg",
-    questions: [
-      {
-        id: 1,
-        qs: "do you love souhail",
-        options: [
-          {
-            id: 1,
-            option: "yes",
-            count: 0
-          },
-          {
-            id: 2,
-            option: "no",
-            count: 0
-          }
-        ]
-      },
-      {
-        id: 2,
-        qs: "do you love cat",
-        options: [
-          {
-            id: 1,
-            option: "yes",
-            count: 0
-          },
-          {
-            id: 2,
-            option: "no",
-            count: 0
-          }
-        ]
-      },
-      {
-        id: 3,
-        qs: "do you love tea",
-        options: [
-          {
-            id: 1,
-            option: "yes",
-            count: 0
-          },
-          {
-            id: 2,
-            option: "no",
-            count: 0
-          },
-          {
-            id: 3,
-            option: "maybe",
-            count: 0
-          }
-        ]
-      }
-    ]
-  }
-];
+//data : 
+import { data } from '../../data/data';
+import Questions from './Questions';
 
+
+
+
+//component survey form : 
 function SurveyForm() {
+  //useState for answers
   const [answers, setAnswers] = useState({});
+  const [survey, setSurvey] = useState(data);
+  
 
+  //handel switch radio btn :
   const handleOptionChange = (questionId, optionId) => {
     setAnswers(prevAnswers => ({
       ...prevAnswers,
@@ -73,37 +23,34 @@ function SurveyForm() {
     }));
   };
 
+
+  //handel submit : 
   const handleSubmit = () => {
     console.log("Selected Answers:", answers);
   };
 
+
+  //return Survey Form 
   return (
-    <div>
-      <h1>Survey Form</h1>
-         {/* image */}
-      <img src={data[0].img} alt="image" width={'400px'} height={'1000px'}/>
-      <h2>{data[0].title}</h2>
-      <h3>{data[0].description}</h3>
-      {data[0].questions.map(question => (
-        <div key={question.id}>
-          <h4>{question.qs}</h4>
-          <div>
-            {question.options.map(option => (
-              <div key={option.id}>
-                <input
-                  type="radio"
-                  name={`question_${question.id}`}
-                  value={option.option}
-                  onChange={() => handleOptionChange(question.id, option.id)}
-                  checked={answers[question.id] === option.id}
-                />
-                <label>{option.option}</label>
-              </div>
-            ))}
-          </div>
+    <div className="container">
+      <h1 className="title">Survey Form</h1>
+      {/* first card title desc */}
+      <div className="wrapper">
+        <div className="infoSurvey">
+          <h2 className="surveyTitle">{survey.title}</h2>
+          <p className="surveyText">{survey.description}</p>
+        <div className='imgContainer'><img src={survey.img} alt="image" className="surveyImg" /></div>
         </div>
-      ))}
-      <button onClick={handleSubmit}>Submit</button>
+      </div>
+      {/* end --- */}
+
+
+      {survey.questions.map((q,i)=>{
+        return (
+          <div key={i}><Questions handleOptionChange={handleOptionChange} answers={answers} question={q}/></div>
+        )
+      })}
+      <button onClick={handleSubmit} className="submit">Submit</button>
     </div>
   );
 }

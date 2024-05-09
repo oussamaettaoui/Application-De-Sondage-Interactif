@@ -6,9 +6,9 @@ import SurveyForm from "../Home/SurveyForm"
 function App() {
   return (
     <BrowserRouter>
-      <NavBar/>
+      {/* <NavBar/> */}
       <SurveyForm/>
-      <Routes/>
+      {/* <Routes/> */}
     </BrowserRouter>
   )
 }
