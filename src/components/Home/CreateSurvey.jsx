@@ -13,9 +13,13 @@ function CreateSurvey() {
     options.push(optionObj)
     setOption('')
   }
+  const removeOption = (id)=>{
+    const filteredOptions = options.filter(e=>e.id !== id)
+    setOptions(filteredOptions)
+  }
   return (
     <div>
-      <InputBox option={option} addOption={addOption} setOption={setOption} options={options}/>
+      <InputBox option={option} removeOption={removeOption} addOption={addOption} setOption={setOption} options={options}/>
     </div>
   )
 }

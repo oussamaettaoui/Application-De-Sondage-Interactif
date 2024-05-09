@@ -32,8 +32,8 @@ body{
   @apply w-96 bg-white text-black shadow-md rounded-md
 }
 .option{
-  @apply w-fit border py-1.5 px-3 rounded-full
+  @apply w-fit border border-gray-400 py-1.5 px-3 rounded-full flex items-center gap-2
 }
 .closeIcon{
-  
+  @apply text-xl text-gray-500
 }
