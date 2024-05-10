@@ -1,4 +1,4 @@
-import Routes from "../Routes/Routes";
+import Routes from "../Routes/Routing";
 import NavBar from "../Header/NavBar";
 import { BrowserRouter } from "react-router-dom";
 

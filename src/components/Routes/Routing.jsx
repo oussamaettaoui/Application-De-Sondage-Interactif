@@ -3,12 +3,12 @@ import { Route, Routes as RouterRoutes } from 'react-router-dom'
 import Survey from '../Home/Survey'
 import HomePage from "../Home/HomePage"
 import SurveyForm from '../Home/SurveyForm'
-import CreateSurvey from '../Home/CreateSurvey'
+import CreateSurvey from '../create-survey/CreateSurvey'
 
 
 
 
-function Routes() {
+function Routing() {
   return (
     <RouterRoutes>
       <Route path="/" element={<HomePage />} />
@@ -19,4 +19,4 @@ function Routes() {
   )
 }
 
-export default Routes
+export default Routing
