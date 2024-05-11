@@ -14,7 +14,7 @@ body{
   color: white;
 }
 .FlexBetween {
-  @apply flex justify-between items-center
+  @apply flex flex-row justify-between items-center 
 }
 .primaryGreenBtn {
   @apply w-max h-max bg-green-500 px-4 py-2 rounded hover:bg-green-600 transition duration-500 ease-in-out
@@ -39,4 +39,9 @@ body{
 }
 .add{
   @apply bg-green-500 hover:bg-green-600 text-white
+}
+.gradient-title{
+  background : linear-gradient(to bottom , #194c33, #bbb);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color: transparent;
 }
