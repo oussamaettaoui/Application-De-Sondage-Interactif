@@ -22,6 +22,9 @@ body{
 .primaryEmeraldBtn {
   @apply w-max h-max bg-emerald-500 px-4 py-2 rounded hover:bg-emerald-600 transition duration-500 ease-in-out
 }
+.primaryZincBtn {
+  @apply w-max h-max bg-zinc-700 px-4 py-2 rounded hover:bg-emerald-600 transition duration-500 ease-in-out
+}
 .flexBox {
   @apply flex justify-center items-center
 }
@@ -44,4 +47,14 @@ body{
   background : linear-gradient(to bottom , #194c33, #bbb);
   -webkit-background-clip:text;
   -webkit-text-fill-color: transparent;
+}
+.input{
+  @apply w-5 h-5 m-2.5 rounded-xl cursor-pointer align-middle;
+}
+.input:checked {
+  -webkit-transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1),
+  -webkit-transform .25s cubic-bezier(0, 0, .2, 1);
+}
+.input:active {
+  -webkit-transform: scale(1.5);
 }

@@ -10,8 +10,8 @@ function Routing() {
     <RouterRoutes>
       <Route path="/" element={<HomePageContainer />} />
       <Route path="/CreateSurvey" element={<CreateSurveyContainer/>}/>
-      <Route path="/SurveyReport/{id}" element={<SurveyReportContainer/>} />
-      <Route path="/SurveyForm/{id}" element={<SurveyFormContainer/>}/>
+      <Route path="/SurveyReport/:id" element={<SurveyReportContainer/>} />
+      <Route path="/SurveyForm/:id" element={<SurveyFormContainer/>}/>
     </RouterRoutes>
   )
 }
