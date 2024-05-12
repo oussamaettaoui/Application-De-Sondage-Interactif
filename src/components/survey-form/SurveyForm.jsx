@@ -2,7 +2,7 @@ import React from 'react'
 import Question from './Question'
 
 function SurveyForm(props) {
-  const {survey,handleBack,handleSubmit,handleNext,isLastQuestion,currentQIndex,showSurvey,setShowSurvey,answers,handleOptionChange} = props
+  const {survey,handleBack,handleSubmit,handleNext,isLastQuestion,currentQIndex,showSurvey,setShowSurvey,handleOptionChange} = props
   
   return (
     <div className=''>
@@ -22,7 +22,6 @@ function SurveyForm(props) {
             handleBack={handleBack}
             isLastQuestion={isLastQuestion}
             handleOptionChange={handleOptionChange}
-            answers={answers}
             question={survey.questions[currentQIndex]}
             currentQIndex={currentQIndex}
             survey={survey}

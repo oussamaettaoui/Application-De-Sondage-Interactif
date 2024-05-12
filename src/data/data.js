@@ -48,7 +48,7 @@ export const demo = [
                 ]
             },
             {
-                id : 2,
+                id : 3,
                 qs : "what your favorite cat's color ?",
                 options : [
                     {

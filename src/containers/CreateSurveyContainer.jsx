@@ -4,6 +4,10 @@ function CreateSurveyContainer() {
     const [questionBox, setQuestionBox] = useState([{id:Date.now(), qs:'',options:[{id : Date.now()*(Math.floor(Math.random()*999)+1),op : "", count : 0},{id : Date.now()*(Math.floor(Math.random()*999)+1),op : "", count : 0}]}]);
     const title = useRef()
     const description = useRef()
+    const [img,setImg] = useState()
+    const handleImg= (e)=>{
+        setImg(e.target.files[0])
+    }
     // to handle question input
     const handleQuestion = (i,event)=>{
         setQuestionBox(prev=>prev.map(e=>{
@@ -44,6 +48,7 @@ function CreateSurveyContainer() {
         const survey = {
             id : Date.now(),
             title : title.current.value,
+            img : img.name,
             description: description.current.value,
             questions : questionBox
         }
@@ -51,7 +56,7 @@ function CreateSurveyContainer() {
     }
     return (
         <>
-            <CreateSurvey handleOption={handleOption} addOption={addOption} questionBox={questionBox} handleQuestion={handleQuestion} handleSubmit={handleSubmit} addQuestionBox={addQuestionBox} title={title} description={description} />
+            <CreateSurvey handleImg={handleImg} handleOption={handleOption} addOption={addOption} questionBox={questionBox} handleQuestion={handleQuestion} handleSubmit={handleSubmit} addQuestionBox={addQuestionBox} title={title} description={description} />
         </>
     )
 }
