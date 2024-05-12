@@ -1,9 +1,7 @@
 import React from 'react'
 
 function Option(props) {
-    const {handleOptionChange,question,option} = props
-    console.log(option.id)
-    console.log(question.id)
+    const {handleOptionChange,answers,question,option} = props
     return (
         <div>
             <label>
@@ -13,6 +11,7 @@ function Option(props) {
                     type="radio"
                     value={option.id}
                     onChange={() => handleOptionChange(question.id, option.id)}
+                    checked = {answers[question.id]=== option.id}
                 />
                 <span>{option.op}</span>
             </label>

@@ -2,7 +2,7 @@ import React from 'react'
 import Option from './Option'
 
 function Question(props) {
-    const {survey,question,handleSubmit,handleBack,handleNext,isLastQuestion,currentQIndex,handleOptionChange} = props
+    const {survey,answers,question,handleSubmit,handleBack,handleNext,isLastQuestion,currentQIndex,handleOptionChange} = props
     return (
         <div className='w-[40rem] m-auto'>
             <div className='w-[30rem] bg-zinc-900 rounded-md p-3 m-auto'>
@@ -10,7 +10,7 @@ function Question(props) {
                 <div className=''>
                     {question.options.map((option,i)=>{
                         return (
-                            <div className='ml-5' key={i}><Option question={question} handleOptionChange={handleOptionChange} option={option} /></div>
+                            <div className='ml-5' key={i}><Option answers={answers} index={i} question={question} handleOptionChange={handleOptionChange} option={option} /></div>
                         )
                     })}
                 </div>
