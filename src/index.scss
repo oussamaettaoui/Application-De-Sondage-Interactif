@@ -1,0 +1,40 @@
+// vars
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+}
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.1rem;
+}
+$primaryGreen : #22c55e;
+$hoverGreen: #16a34a;
+$boxShadow: .25em .25em .75em rgba(0,0,0,.25);
+
+.FlexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.FlexBetween{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.transition{
+    transition: ease-in-out 500ms;
+}
+.BtnAnimation {
+    transition: transform 0.2s ease-in-out;
+    &:hover{
+        transform: translateY(-0.25rem) scale(1.1);
+    }
+}
+
+
+
+
+

@@ -1,14 +1,38 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import '../styles/navbar.css'
+import '../styles/header.scss'
 
 function NavBar() {
   const location = useLocation()
+  const navList = [
+    {name : 'Home', path : '/'},
+    {name : 'Surveys', path : '/Surveys'},
+    {name : 'Reports', path : '/Reports'},
+  ]
   
   return (
-    <div className='w-full bg-zinc-900 FlexBetween px-16 py-8 sticky top-0 z-10'>
-      <Link to='/'><h1 className='h-11 text-4xl font-bold gradient-title'>SurveyApp</h1></Link>
-      {location.pathname !== '/CreateSurvey' && <Link to="/CreateSurvey"><div className='primaryGreenBtn'>Create a new survey</div></Link>}
+    <div className='NavbarContainer'>
+      <div className='Header FlexBetween Sticky'>
+        <h1 className='HeaderTitle'><Link to={'/'}>SurveyApp</Link></h1>
+        <ul className='navList'>
+          {navList.map((item,i)=>{
+            return (
+              <li key={i}><Link className={location.pathname === item.path && 'activeLink'} to={item.path}>{item.name}</Link></li>
+            )
+          })}
+        </ul>
+      </div>
+      <div className='Introduction'>
+        <div className='IntroInfo'>
+          <h3 className='IntroInfoTitle'>Survey Feedback</h3>
+          <div className='IntroInfoDescription'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste aliquam quibusdam aperiam commodi nostrum. Aliquid magni tempore quo voluptatibus exercitationem voluptate voluptates vel tenetur, quaerat veniam sed possimus enim et?</div>
+          <div className='IntroInfoButtons'>
+            <button className=''>Get Started</button>
+            <button className=''>View Surveys</button>
+          </div>
+        </div>
+        <div className='imgContainer'><img src="../../survey.png" alt="" /></div>
+      </div>
     </div>
   )
 }

@@ -17,7 +17,6 @@ function Routing() {
     };
         getSurvey();
     },[]);
-    console.log(data);
   return (
     <RouterRoutes>
       <Route path="/" element={<HomePageContainer data={data}/>} />
