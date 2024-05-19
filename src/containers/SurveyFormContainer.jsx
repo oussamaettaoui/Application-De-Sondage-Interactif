@@ -1,14 +1,10 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import SurveyForm from '../components/survey-form/SurveyForm'
-import {demo} from '../data/data'
 
 function SurveyFormContainer({data}) {
-  console.table(data);
   const {id} = useParams()
-  console.log(id);
   const [survey,setSurvey] = useState(data[id])
-  console.log(survey);
   //
   const [showSurvey, setShowSurvey] = useState(true);
   const [currentQIndex, setCurrentQIndex] = useState(0);

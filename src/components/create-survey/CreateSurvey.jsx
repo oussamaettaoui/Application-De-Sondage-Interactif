@@ -1,29 +1,28 @@
-
 import QuestionBox from './QuestionBox';
 import AddQuestion from './AddQuestion';
+import { useContext } from 'react';
+import { AppContext } from '../../context/ContextProvider';
+import '../../styles/create-survey.scss'
 
-function CreateSurvey(props) {
-  const {handleImg,questionBox,handleOption,handleQuestion,addOption,handleSubmit,addQuestionBox,title,description} = props
+function CreateSurvey() {
+  const {useCreateSurveyState,titleRef,descriptionRef,handleImg,handleCreateSurveySubmit} = useContext(AppContext);
   return (
-    <div className='w-[40rem] mx-auto'>
-      <h1 className='h-24 font-bold text-7xl my-4 text-center gradient-title'>Create Survey</h1>
-      <div className="container min-vh-100 d-flex justify-content-center align-items-center ">
-        <form onSubmit={handleSubmit}>
-          <div className="row row-l">
-              <input name='title' className="form-control mb-4 " placeholder="Input box" type="text" ref={title} />
-              <textarea name ='description' className="form-control mb-2" placeholder="Textarea" rows="4" ref={description}></textarea>
-              <div className='w-max mx-auto my-3 '>
-                <input type="file"  name="file" id="file" onChange={handleImg} className="inputfile" />
-                <label htmlFor="file">Choose a file</label>
-              </div>
-              {questionBox.map((e,index)=>{
-                return(
-                  <div key={index}><QuestionBox handleOption={handleOption} question={e} qsIndex={index} handleQuestion={handleQuestion}  addOption={addOption} /></div>
-                )
-              })}
-              <AddQuestion addQuestionBox={addQuestionBox}/>
+    <div className='CreateSurveyContainer'>
+      <h1 className='CreateSurveyTitle'>Create Survey</h1>
+      <div className="FormContainer">
+        <form onSubmit={handleCreateSurveySubmit}>
+          <input name='title' className="SurveyInput" placeholder="Enter Survey Title" type="text" ref={titleRef} />
+          <textarea name ='description' className="SurveyInput" placeholder="Survey Description" rows="4" ref={descriptionRef}></textarea>
+          <div className='InputFileWrapper'>
+            <input type="file" name="file" id="file" onChange={handleImg} className="inputFile" />
           </div>
-          <button type='submit' className='w-full h-10 mb-5 py-1 bg-green-500 text-xl rounded-md'>Add Survey</button>
+          {useCreateSurveyState.survey.map((e,index)=>{
+            return(
+              <div key={index}><QuestionBox question={e} qsIndex={index} /></div>
+            )
+          })}
+          <AddQuestion/>
+          <button type='submit' className='CreateSurveySubmit'>Add Survey</button>
         </form>
       </div>
       

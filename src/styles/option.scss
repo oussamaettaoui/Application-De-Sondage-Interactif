@@ -1,0 +1,54 @@
+// Vars
+$primaryBlue : #336aea;
+$purpleHover : #c983ff;
+$boxShadow: .25em .25em .75em rgba(0,0,0,.25);
+// Mixin
+
+// Style
+.OptionWrapper{
+    margin-top: 1rem;
+    .InputOption{
+        display:none;
+        &:checked ~ .OptionBox{
+            border-color:$primaryBlue ;
+            background: hsl(222, 100%, 89%);
+        }
+        &:checked ~ .OptionBox .circle{
+            border-color:$primaryBlue;
+            background: #fff;
+        }
+    }
+    .OptionBox{
+        background: #ddd;
+        display: flex;
+        margin-top: 12px;
+        padding: 10px 12px;
+        border-radius:5px ;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.25s ease;
+        &:hover{
+            background: hsl(222, 100%, 89%);
+        }
+        .option{
+            display: flex;
+            width: 100%;
+            align-items: center;
+            .circle{
+                height: 22px;
+                width: 22px;
+                background: #ccc;
+                border-radius:50%;
+                margin-right:15px;
+                border:5px solid transparent;
+                display: inline-block;
+                transition: all 0.25s ease;
+                box-shadow: inset -4px -4px 10px rgba(0,0,0,0.2);
+                
+            }
+            .subject{
+    
+            }
+        }
+    }
+}

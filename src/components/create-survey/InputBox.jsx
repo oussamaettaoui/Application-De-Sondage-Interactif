@@ -1,19 +1,23 @@
-import React, { useState } from 'react'
-import { IoIosCloseCircle } from "react-icons/io";
 
-
+import { FcFullTrash } from "react-icons/fc";
+import '../../styles/input-box.scss'
+import { useContext } from "react";
+import { AppContext } from "../../context/ContextProvider";
+import { CREATE_SURVEY_ACTIONS } from "../../hooks/useCreateSurvey";
 function InputBox(props) {
-    const {addOption,handleOption,options,qsIndex} = props
+    const {useCreateSurveyDispatch} = useContext(AppContext);
+    const {options,qsIndex} = props;
     return (
-        <div className='w-full pt-3 bg-black flex gap-4 flex-col '>
+        <div className='InputBoxWrapper'>
             {options.map((e,i)=>{
                 return (
-                    <div key={i} className='card h-max  FlexBetween px-2 py-2'>
-                        <input className='bg-transparent outline-none px-2 py-1 text-sm flex-1 caret-green-600' type="text" placeholder='Add Option'  onChange={e=>handleOption(qsIndex,i,e)}/>
+                    <div className="InputBoxContainer" key={i}>
+                        <input className='InputBox' type="text" placeholder='Add Option'  onChange={event=>useCreateSurveyDispatch({type : CREATE_SURVEY_ACTIONS.HANDLE_OPTION,payload : {value:event.target.value,qsIndex,opId : e.id}})}/>
+                        <FcFullTrash onClick={()=>useCreateSurveyDispatch({type : CREATE_SURVEY_ACTIONS.DELETE_OPTION, payload : {qsIndex, optionId : e.id}})} className="TrashIcon" />
                     </div>
                 )
             })}
-            <button type='button' className='w-64 h-10 bg-green-500 text-md rounded-md' onClick={()=>{addOption(qsIndex)}}>+ Add</button>
+            <button type='button' className='InputBoxButton' onClick={()=>useCreateSurveyDispatch({type : CREATE_SURVEY_ACTIONS.ADD_OPTION , payload: qsIndex})}>+ Add</button>
         </div>
     )
 }

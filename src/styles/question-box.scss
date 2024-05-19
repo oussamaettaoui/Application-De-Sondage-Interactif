@@ -1,0 +1,67 @@
+// Vars
+$primaryBlue : #336aea;
+$purpleHover : #c983ff;
+$boxShadow: .25em .25em .75em rgba(0,0,0,.25);
+// Style
+.QuestionBoxWrapper{
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 1rem;
+    box-shadow: $boxShadow;
+    padding: 1.5em 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    .QuestionBoxTitle{
+        font-weight: 600;
+        letter-spacing: .4em;
+        color: $primaryBlue;
+    }
+    .QuestionBoxInput{
+        width: 80%;
+        height: 2.5rem;
+        padding: .25em .5em;
+        border-radius: .5em;
+        border: 1.5px solid lightgrey;
+        outline: none;
+        transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+        box-shadow: 0px 0px 20px -18px;
+        &:hover{
+            border: 2px solid lightgrey;
+            box-shadow: 0px 0px 20px -17px;
+        }
+        &:active{
+            transform: scale(0.95);
+        }
+        &:focus{
+            border: 2px solid $primaryBlue;
+        }
+    }
+    .DeleteQuestionBox{
+        width: 80%;
+        height: 2.5rem;
+        background-color: rgb(255, 240, 237);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .8rem;
+        color: rgb(247, 60, 27);
+        border: none;
+        border-radius: .5rem;
+        transition: .3s;
+        cursor: pointer;
+        &:hover{
+            background-color: rgb(247, 60, 27);
+            box-shadow: 0 0 0 5px rgb(255, 156, 138);
+            color: #fff;
+        }
+        .DeleteIcon{
+            font-size: 1.2rem;
+        }
+        .DeleteText{
+            font-family: monospace;
+            letter-spacing: .1em;
+        }
+    }
+}

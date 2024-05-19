@@ -7,13 +7,16 @@ function NavBar() {
   const navList = [
     {name : 'Home', path : '/'},
     {name : 'Surveys', path : '/Surveys'},
-    {name : 'Reports', path : '/Reports'},
+    {name : 'Create Survey', path : '/CreateSurvey'},
   ]
   
   return (
     <div className='NavbarContainer'>
       <div className='Header FlexBetween Sticky'>
-        <h1 className='HeaderTitle'><Link to={'/'}>SurveyApp</Link></h1>
+        <Link to='/' className='logoContainer'>
+          <div className='iconContainer'><img src="../../surveyIcon.png" alt="survey-icon" /></div>
+          <h2>SurveyApp</h2>
+        </Link>
         <ul className='navList'>
           {navList.map((item,i)=>{
             return (
@@ -22,17 +25,7 @@ function NavBar() {
           })}
         </ul>
       </div>
-      <div className='Introduction'>
-        <div className='IntroInfo'>
-          <h3 className='IntroInfoTitle'>Survey Feedback</h3>
-          <div className='IntroInfoDescription'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste aliquam quibusdam aperiam commodi nostrum. Aliquid magni tempore quo voluptatibus exercitationem voluptate voluptates vel tenetur, quaerat veniam sed possimus enim et?</div>
-          <div className='IntroInfoButtons'>
-            <button className=''>Get Started</button>
-            <button className=''>View Surveys</button>
-          </div>
-        </div>
-        <div className='imgContainer'><img src="../../survey.png" alt="" /></div>
-      </div>
+      
     </div>
   )
 }

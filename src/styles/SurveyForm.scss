@@ -1,0 +1,46 @@
+// Vars
+$primaryBlue : #336aea;
+$purpleHover : #c983ff;
+$boxShadow: .25em .25em .75em rgba(0,0,0,.25);
+// Mixin
+
+// Style
+.SurveyFormContainer{
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    .SurveyFormTitle{
+        font-weight: 800;
+        text-align: center;
+        margin-block : 1em;
+        font-size: 3em;
+        background: linear-gradient(90deg, $primaryBlue, $purpleHover, $primaryBlue);   
+        text-transform: uppercase;
+        letter-spacing: .25em;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        animation: shine 10s linear infinite;
+        position: relative;
+    }
+    .FormContainer{
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+
+    }
+}
+// animate
+@keyframes shine {
+    0% {
+        background-position-x: -400%;
+    }
+    100% {
+        background-position-x: 500%;
+    }
+}

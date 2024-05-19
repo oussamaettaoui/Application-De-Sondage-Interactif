@@ -1,22 +1,37 @@
 import { Link } from 'react-router-dom';
-function HomePage(props) {
-  const {surveys} = props
+import '../styles/home_page.scss'
+import { useContext } from 'react';
+import { AppContext } from '../context/ContextProvider';
+import { info } from '../data/homeInfo';
+function HomePage() {
+  const {useSurveyState} = useContext(AppContext);
   return (
-    <div className='w-full h-max'>
-      <h1 className='h-28 font-bold text-8xl text-center my-8 gradient-title'>Survey Page</h1>
-      <div className='flexBox flex-col'>
-        {surveys.map((survey,i)=>{
+    <div className='HomePageContainer'>
+      <div className='Introduction'>
+        <div className='IntroInfo'>
+          <h3 className='IntroInfoTitle'>{info.title}</h3>
+          <div className='IntroInfoDescription'>{info.description}</div>
+          <div className='IntroInfoButtons'>
+            <Link to=''><div className='CreateSurveyBtn BtnAnimation'>Views Surveys</div></Link>
+            <Link to=''><div className='ViewSurveysBtn BtnAnimation'>Create A Survey</div></Link>
+          </div>
+        </div>
+        <div className='imgContainer'><img src="../../survey.png" alt="" /></div>
+      </div>
+      <h1 className='LatestSurveyTitle'>Latest Surveys</h1>
+      <div className='SurveyCards'>
+        {useSurveyState.surveys.map((survey,i)=>{
           return (
-            <div className='flex odd:flex-row-reverse justify-center gap-12 px-4 py-2 my-5' key={i}>
-              <div className='w-1/2'>
-                <h1 className='text-2xl font-bold'>{survey.title}</h1>
-                <div className='pt-4'>{survey.description}</div>
-                <div className='flexBox gap-16 mt-14'>
-                  <Link to={'/SurveyReport/'+i}><div className='primaryEmeraldBtn animationBtn'>Survey Report</div></Link>
-                  <Link to={'/SurveyForm/'+i}><div className='primaryGreenBtn animationBtn'>Answer Survey</div></Link>
+            <div className='SurveyCard' key={i}>
+              <div className='SurveyImgContainer'><img src={survey.img} alt="" /></div>
+              <div className='SurveyInfoContainer'>
+                <h1 className='SurveyTitle'>{survey.title.substr(0,15)}...</h1>
+                <div className='SurveyDescription'>{survey.description.substr(0,30)}...</div>
+                <div className='SurveyBtnContainer'>
+                  <Link to={'/SurveyReport/'+survey.id}><div className='SurveyReportBtn'>Survey Report</div></Link>
+                  <Link to={'/SurveyForm/'+survey.id}><div className='AnswerSurveyBtn'>Answer Survey</div></Link>
                 </div>
               </div>
-              <div className='w-96 h-64'><img className='w-full h-full' src={survey.img} alt={survey.title} /></div>
             </div>
           )
         })}

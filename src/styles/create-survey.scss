@@ -1,0 +1,172 @@
+// Vars
+$primaryBlue : #336aea;
+$purpleHover : #c983ff;
+$boxShadow: .25em .25em .75em rgba(0,0,0,.25);
+// Mixin
+
+// Style
+.CreateSurveyContainer{
+    margin: 0 auto;
+    margin-top: 6rem;
+    width: 60%;
+    .CreateSurveyTitle{
+        font-weight: 800;
+        text-align: center;
+        margin-block : 1em;
+        font-size: 3em;
+        background: linear-gradient(90deg, $primaryBlue, $purpleHover, $primaryBlue);   
+        text-transform: uppercase;
+        letter-spacing: .25em;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 80%;
+        animation: shine 10s linear infinite;
+        position: relative;
+    }
+    .FormContainer{
+        border-radius: .5em;
+        box-shadow: $boxShadow;
+        padding: 3em 1em;
+        margin-block: 2rem;
+        form{
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+            .SurveyInput{
+                background-color: #f5f5f5;
+                color: #242424;
+                padding: .15rem .5rem;
+                min-height: 40px;
+                border-radius: 4px;
+                outline: none;
+                border: none;
+                line-height: 1.15;
+                box-shadow: 0px 10px 20px -18px;
+                &:focus{
+                    border-bottom: 2px solid #5b5fc7;
+                    border-radius: $boxShadow;
+                }
+                &:hover{
+                    outline: 1px solid lightgrey;
+                }
+            }
+            .InputFileWrapper{
+                width: 60%;
+                margin: 0 auto;
+                background-color: #efefef;
+                padding: 2rem;
+                border-radius: 1.5rem;
+                box-shadow: $boxShadow;
+                .inputFile{
+                    padding: .25rem;
+                    margin: -.25rem;
+                    position: relative;
+                    outline: none;
+                    &::file-selector-button {
+                        border-radius: 4px;
+                        padding: 0 16px;
+                        height: 40px;
+                        cursor: pointer;
+                        background-color: white;
+                        border: 1px solid rgba(#000, 0.16);
+                        box-shadow: 0px 1px 0px rgba(#000, 0.05);
+                        margin-right: 16px;
+                        width: 132px;
+                        color: transparent;
+                        @supports (-moz-appearance: none) {
+                            color: $primaryBlue;
+                        }
+                        &:hover {
+                            background-color: #f3f4f6;
+                        }
+                        &:active {
+                            background-color: #e5e7eb;
+                        }
+                    }
+                    &::before {
+                        position: absolute;
+                        pointer-events: none;
+                        top: 14px;
+                        left: 16px;
+                        height: 20px;
+                        width: 20px;
+                        content: "";
+                    }
+                    &::after {
+                        position: absolute;
+                        pointer-events: none;
+                        top: 16px;
+                        left: 40px;
+                        color: $primaryBlue;
+                        content: "Upload File";
+                    }
+                    &:focus-within::file-selector-button,
+                    &:focus::file-selector-button {
+                        outline: 2px solid var($primaryBlue);
+                        outline-offset: 2px;
+                    }
+                }
+            }
+            .CreateSurveySubmit{
+                text-decoration: none;
+                position: relative;
+                border: none;
+                font-size: 1rem;
+                font-family: inherit;
+                cursor: pointer;
+                color: #fff;
+                height: 2.5em;
+                line-height: 2em;
+                text-align: center;
+                background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+                background-size: 300%;
+                border-radius: 1rem;
+                z-index: 1;
+                &:hover{
+                    animation: ani 8s linear infinite;
+                    border: none;
+                }
+                &::before{
+                    content: "";
+                    position: absolute;
+                    top: -5px;
+                    left: -5px;
+                    right: -5px;
+                    bottom: -5px;
+                    z-index: -1;
+                    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+                    background-size: 400%;
+                    border-radius: 1rem;
+                    transition: 1s;
+                }
+                &:hover::before{
+                    filter: blur(5px);
+                }
+                &:active{
+                    background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+                }
+            }
+        }
+    }
+}
+// Animation
+@keyframes shine {
+    0% {
+        background-position-x: -400%;
+    }
+    100% {
+        background-position-x: 500%;
+    }
+}
+@keyframes ani {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 400%;
+    }
+}

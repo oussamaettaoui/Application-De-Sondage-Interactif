@@ -1,34 +1,50 @@
-import React from 'react'
+import React, { useEffect, useReducer } from 'react'
 import Question from './Question'
+import { useParams } from 'react-router-dom';
+import { useFetch } from '../../hooks/useFetch';
+import '../../styles/SurveyForm.scss'
+//
+export const SURVEY_FORM_ACTIONS = {
+  HANDLE_SET_SURVEY : 'HANDLE_SET_SURVEY',
+  '' : '',
+  '' : '',
+  '' : '',
+}
+//
+const SurveyFormReducer = (state , action)=>{
+  switch(action.type){
+      case SURVEY_FORM_ACTIONS.HANDLE_SET_SURVEY : 
+          return {...state,survey : action.payload};
+      default :
+          throw new Error("Invalid Action");
+  }
+}
+function SurveyForm() {
+  const {data , isLoading} = useFetch();
+  const {id} = useParams();
+  const [state,dispatch] = useReducer(SurveyFormReducer , {survey : null });
+  useEffect(() => {
+    if (!isLoading && data.length > 0 && id) {
+      const survey = data.find((s) => s.id === id);
+      if (survey) {
+        dispatch({ type: SURVEY_FORM_ACTIONS.HANDLE_SET_SURVEY, payload: survey });
+      }
+    }
+  }, [data, isLoading, id]);
+  const handleSubmit = ()=>{
 
-function SurveyForm(props) {
-  const {survey,answers,handleBack,handleSubmit,handleNext,isLastQuestion,currentQIndex,showSurvey,setShowSurvey,handleOptionChange} = props
-  
+  }
   return (
-    <div className=''>
-      <h1 className='h-24 text-7xl font-bold my-4 text-center gradient-title'>Survey Form</h1>
-      {showSurvey ? <div className='flex justify-center gap-12 px-4 py-2 my-5 '>
-        <div className='w-1/2'>
-          <h1 className='text-2xl font-bold'>{survey.title}</h1>
-          <div className='pt-4'>{survey.description}</div>
-          <div className='w-max m-auto'><button className='mt-3 primaryGreenBtn animationBtn' onClick={() => setShowSurvey(false)}>Start</button></div>
-        </div>
-        <div className='w-96 h-64'><img src={survey.img} alt={survey.title} /></div>
-      </div> : <div className=''>
-      <div className='w-max mx-auto my-4'><button className= 'primaryEmeraldBtn' onClick={() => setShowSurvey(true)}>Back</button></div>
-      <div>
-      <Question handleSubmit={handleSubmit}
-            handleNext={handleNext}
-            handleBack={handleBack}
-            answers={answers}
-            isLastQuestion={isLastQuestion}
-            handleOptionChange={handleOptionChange}
-            question={survey.questions[currentQIndex]}
-            currentQIndex={currentQIndex}
-            survey={survey}
-          />
+    <div className='SurveyFormContainer'>
+      <h1 className='SurveyFormTitle'>Survey Form</h1>
+      <div className='FormContainer'>
+        {state.survey && state.survey.questions.map((question, i)=>{
+          return (
+              <Question qsId={question.id} question={question} dispatch={dispatch} />
+          )
+        })}
+      <button onClick={handleSubmit}>Submit Answers</button>
       </div>
-      </div>}
     </div>
   )
 }

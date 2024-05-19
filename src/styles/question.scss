@@ -1,0 +1,16 @@
+// Vars
+$primaryBlue : #336aea;
+$purpleHover : #c983ff;
+$boxShadow: .25em .25em .75em rgba(0,0,0,.25);
+// Style
+.QuestionContainer{
+    width:60%;
+    background:#fff ;
+    border-radius: 5px;
+    padding:20px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    .Question{
+        font-size:1.2rem;
+        font-weight: 500;
+    }
+}
