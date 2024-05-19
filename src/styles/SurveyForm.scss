@@ -32,15 +32,29 @@ $boxShadow: .25em .25em .75em rgba(0,0,0,.25);
         flex-direction: column;
         align-items: center;
         gap: 2rem;
-
+        .SubmitBtn{
+            font-family: monospace;
+            background-color: #f3f7fe;
+            color: #3b82f6;
+            border: none;
+            border-radius: 8px;
+            width: 50%;
+            height: 2.5rem;
+            transition: .3s;
+            &:hover{
+                background-color: #3b82f6;
+                box-shadow: 0 0 0 5px #3b83f65f;
+                color: #fff;
+        }
+        }
     }
 }
 // animate
 @keyframes shine {
     0% {
-        background-position-x: -400%;
+        background-position-x: -300%;
     }
     100% {
-        background-position-x: 500%;
+        background-position-x: 300%;
     }
 }
