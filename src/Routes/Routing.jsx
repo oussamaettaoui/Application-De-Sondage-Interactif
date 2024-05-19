@@ -1,6 +1,5 @@
 import { Route, Routes as RouterRoutes } from 'react-router-dom'
 import SurveyReportContainer from '../containers/SurveyReportContainer'
-import SurveyFormContainer from '../containers/SurveyFormContainer'
 import HomePage from '../components/HomePage'
 import CreateSurvey from '../components/create-survey/CreateSurvey'
 import SurveyForm from '../components/survey-form/SurveyForm'
