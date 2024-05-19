@@ -11,12 +11,12 @@ function Option(props) {
                 type="radio"
                 id = {option.id}
                 value={option.id}
-                onChange={()=>dispatch({type : SURVEY_FORM_ACTIONS.HANDLE_OPTION_CHANGE , payload : {qsId , opId : option.is}})}
+                onChange={()=>dispatch({type : SURVEY_FORM_ACTIONS.HANDLE_OPTION_CHANGE , payload : {qsId , opId : option.id}})}
             />
-            <label htmlFor={option.id} class="OptionBox" >
-                <div class="option">
-                    <span class="circle"></span>
-                    <span class="subject">{option.op}</span>
+            <label htmlFor={option.id} className="OptionBox" >
+                <div className="option">
+                    <span className="circle"></span>
+                    <span className="subject">{option.op}</span>
                 </div>
             </label>
         </div>

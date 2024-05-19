@@ -11,7 +11,7 @@ function Question(props) {
                 {question.options.map((option,i)=>{
                     return (
                         <div key={i}>
-                            <Option dispatch={dispatch} qsIndex={qsId} option={option} />
+                            <Option dispatch={dispatch} qsId={qsId} option={option} />
                         </div>
                     )
                 })}

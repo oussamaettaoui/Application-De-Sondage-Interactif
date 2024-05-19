@@ -14,9 +14,14 @@ const SurveyFormReducer = (state , action)=>{
       case SURVEY_FORM_ACTIONS.HANDLE_SET_SURVEY : 
           return {...state,survey : action.payload};
       case SURVEY_FORM_ACTIONS.HANDLE_OPTION_CHANGE:
+        console.log('test' , {...state, survey : {...state.survey , questions : state.survey.questions.map(question=>{
+          if(question.id === action.payload.qsId){
+            return {...question , options : question.options.map((option)=>({...option , count : option.id === action.payload.opId ? 1 : 0}))}
+          }return question;
+        })}});
         return {...state, survey : {...state.survey , questions : state.survey.questions.map(question=>{
           if(question.id === action.payload.qsId){
-            return {...question , options : question.options.map(option=>{})}
+            return {...question , options : question.options.map((option)=>({...option , count : option.id === action.payload.opId ? 1 : 0}))}
           }return question;
         })}}
       default :
@@ -45,7 +50,7 @@ function SurveyForm() {
       <div className='FormContainer'>
         {state.survey && state.survey.questions.map((question, i)=>{
           return (
-              <Question qsId={question.id} question={question} dispatch={dispatch} />
+              <Question key={i} qsId={question.id} question={question} dispatch={dispatch} />
           )
         })}
       <button className='SubmitBtn' onClick={handleSubmit}>Submit Answers</button>
