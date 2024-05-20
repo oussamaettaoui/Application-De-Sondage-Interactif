@@ -1,11 +1,22 @@
-import React, { useEffect, useRef } from 'react';
-import Chart from 'chart.js/auto';
+import React, { useEffect, useRef, useState } from 'react';
+import { useFetch } from '../hooks/useFetch';
+import { useParams } from 'react-router-dom';
 
-function SurveyReport({ survey }) { 
+function SurveyReport() {
+
+
+  const {data, loading} = useFetch();
+  const [filteredData, setFilteredData] = useState(data);
+  const {id} = useParams();
+  console.log(data);
   return (
-    <div className="container">
+    <>
+    {
+      <h1> Report</h1>
+    }
       
-    </div>
+
+    </>
   );
 }
 
