@@ -33,7 +33,7 @@ export const ContextProvider = ({children})=>{
             id : uuid(),
             title : titleRef.current.value ,
             description : descriptionRef.current.value ,
-            questions : useSurveyState,
+            questions : useCreateSurvey.survey,
             img: image,
             time : Date.now(),
             totalCount: 0,
