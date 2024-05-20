@@ -45,7 +45,75 @@ $boxShadow: .25em .25em .75em rgba(0,0,0,.25);
                 background-color: #3b82f6;
                 box-shadow: 0 0 0 5px #3b83f65f;
                 color: #fff;
+            }
         }
+        .GenderWrapper{
+            display: flex;
+            gap: 4rem;
+            width:60%;
+            background:#fff ;
+            border-radius: 5px;
+            align-items: center;
+            padding:2rem;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+            .RadioGroup{
+                display: flex;
+                gap: 4rem;
+                .RadioInput{
+                    position: absolute;
+                    opacity: 0;
+                    &:checked + .RadioLabel{
+                        background-color: #f3f7fe;
+                        border-color: $primaryBlue;
+                    }
+                    &:focus + .RadioLabel{
+                        outline: 2px solid $primaryBlue;
+                    }
+                    &:checked + .RadioLabel .RadioInnerCircle{
+                        border-color: $primaryBlue;
+                    }
+                    &:checked + .RadioLabel .RadioInnerCircle{
+                        &::after{
+                            content: '';
+                            display: block;
+                            width: 0.5em;
+                            height: 0.5em;
+                            background-color: $primaryBlue;
+                            border-radius: 50%;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                    }
+                }
+                .RadioLabel{
+                    display: flex;
+                    align-items: center;
+                    padding: 0.5em;
+                    margin-bottom: 0.5em;
+                    background-color: #fff;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    transition: background-color 0.2s, border-color 0.2s;
+                    &:hover{
+                        background-color: #f3f7fe;
+                    }
+                    &:hover .RadioInnerCircle{
+                        border-color: #555;
+                    }
+                    .RadioInnerCircle{
+                        display: inline-block;
+                        width: 1em;
+                        height: 1em;
+                        border: 2px solid #888;
+                        border-radius: 50%;
+                        margin-right: 0.5em;
+                        transition: border-color 0.2s;
+                        position: relative;
+                    }
+                }
+            }
         }
     }
 }
