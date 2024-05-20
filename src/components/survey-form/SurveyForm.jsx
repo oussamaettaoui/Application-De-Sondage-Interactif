@@ -9,6 +9,7 @@ export const SURVEY_FORM_ACTIONS = {
   HANDLE_SET_SURVEY : 'HANDLE_SET_SURVEY',
   HANDLE_OPTION_CHANGE : 'HANDLE_OPTION_CHANGE',
   HANDLE_GENDER_CHANGE : 'HANDLE_GENDER_CHANGE',
+  HANDLE_SUBMIT : 'HANDLE_SUBMIT'
 }
 //
 const SurveyFormReducer = (state , action)=>{
@@ -16,17 +17,6 @@ const SurveyFormReducer = (state , action)=>{
       case SURVEY_FORM_ACTIONS.HANDLE_SET_SURVEY : 
           return {...state,survey : action.payload};
       case SURVEY_FORM_ACTIONS.HANDLE_OPTION_CHANGE:
-        console.log({...state,temp : action.payload.opId, survey : {...state.survey , questions : state.survey.questions.map(question=>{
-          if(question.id === action.payload.qsId){
-            return {...question , options : question.options.map(option=>{
-              if(option.id === action.payload.opId){
-                return {...option, count : option.count +1}
-              }else if(option.id === state.temp) {
-                return {...option, count : option.count -1}
-              }return option
-            })}
-          }return question;
-        })}});
         return {...state,temp : action.payload.opId, survey : {...state.survey , questions : state.survey.questions.map(question=>{
           if(question.id === action.payload.qsId){
             return {...question , options : question.options.map(option=>{
@@ -39,16 +29,22 @@ const SurveyFormReducer = (state , action)=>{
           }return question;
         })}}
       case SURVEY_FORM_ACTIONS.HANDLE_GENDER_CHANGE :
-        return {...state , survey : {...state.survey , totalCount : state.survey.totalCount + 1,maleCount :  action.payload === 'male' ? state.survey.maleCount + 1 : state.survey.maleCount , femaleCount : action.payload === 'female' ? state.survey.femaleCount+1 : state.survey.femaleCount}}
+        const newGender = action.payload;
+        const prevGender = state.selectedGender;
+        return {...state , selectedGender : newGender, survey : {...state.survey ,
+          maleCount: newGender === 'male' ? state.survey.maleCount + 1 : prevGender === 'male' ? state.survey.maleCount - 1 : state.survey.maleCount,
+          femaleCount: newGender === 'female' ? state.survey.femaleCount + 1 : prevGender === 'female' ? state.survey.femaleCount - 1 : state.survey.femaleCount,
+        }}
+      case SURVEY_FORM_ACTIONS.HANDLE_SUBMIT :
+        return {...state,survey: {...state.survey, totalCount: state.survey.totalCount + 1}};
       default :
           throw new Error("Invalid Action");
   }
 }
 function SurveyForm() {
-  const [gender,setGender] = useState();
   const {data , isLoading} = useFetch();
   const {id} = useParams();
-  const [state,dispatch] = useReducer(SurveyFormReducer , {temp : 0,survey : null });
+  const [state,dispatch] = useReducer(SurveyFormReducer , {selectedGender: null,temp : 0,survey : null });
   console.log(state.survey);
   useEffect(() => {
     if (!isLoading && data.length > 0 && id) {
@@ -59,11 +55,15 @@ function SurveyForm() {
     }
   }, [data, isLoading, id]);
   const handleGender = (e)=>{
-    setGender(e.target.value);
+    dispatch({ type: SURVEY_FORM_ACTIONS.HANDLE_GENDER_CHANGE, payload: e.target.value });
   }
   const handleSubmit = ()=>{
-    dispatch({type : SURVEY_FORM_ACTIONS.HANDLE_GENDER_CHANGE , payload : gender})
-    console.log('Submitted Survey:', state.survey);
+    if (state.selectedGender) {
+      dispatch({ type: SURVEY_FORM_ACTIONS.HANDLE_SUBMIT });
+      console.log('Submitted Survey:', state.survey);
+    } else {
+      alert('Please select a gender.');
+    }
   }
   return (
     <div className='SurveyFormContainer'>
