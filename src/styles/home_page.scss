@@ -139,6 +139,36 @@ $boxShadow: .25em .25em .75em rgba(0,0,0,.25);
             }
         }
     }
+    .btnWrapper{
+        width: 30%;
+        margin: 2rem auto;
+        a{
+            text-decoration: none;
+        }
+        .SeeMoreBtn{
+            width: 100%;
+            position: relative;
+            display: inline-block;
+            padding: .75rem 1rem;
+            text-align: center;
+            font-size: 1rem;
+            letter-spacing: .3em;
+            text-decoration: none;
+            color: $primaryBlue;
+            background: transparent;
+            cursor: pointer;
+            transition: ease-out 0.5s;
+            border: 2px solid $primaryBlue;
+            border-radius: .5rem;
+            box-shadow: inset 0 0 0 0 $primaryBlue;
+            &:hover{
+                color: white ;
+            }
+            &:active{
+                transform: scale(0.9);
+            }
+        }
+    }
 }
 // animation
 @keyframes shine {

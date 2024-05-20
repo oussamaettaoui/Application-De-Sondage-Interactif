@@ -38,6 +38,11 @@ function HomePage() {
           )
         })}
       </div> : <Loading/>}
+      <div className='btnWrapper'>
+        <button className='SeeMoreBtn'>
+        <Link to='/Surveys'>See More Survey...<div class="arrow-wrapper"><div class="arrow"></div></div></Link>
+        </button>
+      </div>
     </div>
   )
 }

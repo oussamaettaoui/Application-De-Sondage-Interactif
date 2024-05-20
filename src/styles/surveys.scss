@@ -1,0 +1,99 @@
+// Vars
+$primaryBlue : #336aea;
+$purpleHover : #c983ff;
+$boxShadow: .25em .25em .75em rgba(0,0,0,.25);
+// Mixin
+@mixin btn-style($bg,$color,$brc){
+    background-color: $bg;
+    color: $color;
+    padding: .3em .5em;
+    border: 2px solid $brc;
+    border-radius: 2.5rem;
+}
+@mixin btnStyleHover($bg,$color){
+    background-color: $bg;
+    color: $color;
+}
+// style
+.SurveysContainer{
+    margin-top: 6rem;
+    .SurveysTitle{
+        font-weight: 700;
+        text-align: center;
+        margin-block : 1em;
+        font-size: 3em;
+        background: linear-gradient(90deg, $primaryBlue, $purpleHover, $primaryBlue);   
+        text-transform: uppercase;
+        letter-spacing: .25em;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 90%;
+        animation: shine 10s linear infinite;
+        position: relative;
+    }
+    .SurveyCards{
+        display: grid;
+        grid-template-columns: repeat(3,28%);
+        justify-content: center;
+        padding: 1em;
+        gap: 2rem;
+        .SurveyCard{
+            height: fit-content;
+            border-radius: .5em;
+            box-shadow: $boxShadow;
+            padding: .5em;
+            .SurveyImgContainer{
+                img{
+                    width: 100%;
+                    border-radius: .5rem;
+                }
+            }
+            .SurveyInfoContainer{
+                margin-top: .3rem;
+                text-align: center;
+                *{
+                    padding-bottom: .3rem;
+                }
+                .SurveyTitle{
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                }
+                .SurveyDescription{
+
+                }
+                .SurveyBtnContainer{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+                    a{
+                        text-decoration: none;
+                    }
+                    .SurveyReportBtn{
+                        @include btn-style(white,$purpleHover,$purpleHover);
+                        &:hover{
+                            @include btnStyleHover( $purpleHover,white);
+                        }
+                    }
+                    .AnswerSurveyBtn{
+                        @include btn-style($primaryBlue,white,$primaryBlue);
+                        &:hover{
+                            @include btnStyleHover(white,$primaryBlue)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// animation 
+@keyframes shine {
+    0% {
+        background-position-x: -500%;
+    }
+    100% {
+        background-position-x: 500%;
+    }
+}
