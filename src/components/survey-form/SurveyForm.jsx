@@ -3,6 +3,7 @@ import Question from './Question'
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
 import '../../styles/SurveyForm.scss'
+import Loading from '../Loading';
 //
 export const SURVEY_FORM_ACTIONS = {
   HANDLE_SET_SURVEY : 'HANDLE_SET_SURVEY',
@@ -47,14 +48,14 @@ function SurveyForm() {
   return (
     <div className='SurveyFormContainer'>
       <h1 className='SurveyFormTitle'>Survey Form</h1>
-      <div className='FormContainer'>
+      {!isLoading ? <div className='FormContainer'>
         {state.survey && state.survey.questions.map((question, i)=>{
           return (
               <Question key={i} qsId={question.id} question={question} dispatch={dispatch} />
           )
         })}
       <button className='SubmitBtn' onClick={handleSubmit}>Submit Answers</button>
-      </div>
+      </div> : <Loading/>}
     </div>
   )
 }

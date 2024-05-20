@@ -5,11 +5,10 @@ import { db } from "../data/data";
 
 export function useFetch() {
     const [data, setData] = useState([]);
-    const [isLoading,setIsLoading] = useState(false);
+    const [isLoading,setIsLoading] = useState(true);
     const surveyRef = collection(db, "surveys");
     useEffect(() => {
         const getSurvey = async () => {
-            setIsLoading(true);
             try {
                 const dt = await getDocs(surveyRef);
                 setData(dt.docs.map((doc) => ({ ...doc.data(), id: doc.id })));

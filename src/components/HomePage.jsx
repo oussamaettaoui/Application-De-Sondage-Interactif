@@ -3,8 +3,10 @@ import '../styles/home_page.scss'
 import { useContext } from 'react';
 import { AppContext } from '../context/ContextProvider';
 import { info } from '../data/homeInfo';
+import Loading from './Loading';
 function HomePage() {
   const {useSurveyState} = useContext(AppContext);
+  console.log(useSurveyState)
   return (
     <div className='HomePageContainer'>
       <div className='Introduction'>
@@ -19,7 +21,7 @@ function HomePage() {
         <div className='imgContainer'><img src="../../survey.png" alt="" /></div>
       </div>
       <h1 className='LatestSurveyTitle'>Latest Surveys</h1>
-      <div className='SurveyCards'>
+      {!useSurveyState.isLoading ? <div className='SurveyCards'>
         {useSurveyState.surveys.map((survey,i)=>{
           return (
             <div className='SurveyCard' key={i}>
@@ -35,7 +37,7 @@ function HomePage() {
             </div>
           )
         })}
-      </div>
+      </div> : <Loading/>}
     </div>
   )
 }
