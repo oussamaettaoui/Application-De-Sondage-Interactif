@@ -14,8 +14,8 @@ function HomePage() {
           <h3 className='IntroInfoTitle'>{info.title}</h3>
           <div className='IntroInfoDescription'>{info.description}</div>
           <div className='IntroInfoButtons'>
-            <Link to=''><div className='CreateSurveyBtn BtnAnimation'>Views Surveys</div></Link>
-            <Link to=''><div className='ViewSurveysBtn BtnAnimation'>Create A Survey</div></Link>
+            <Link to='/Surveys'><div className='CreateSurveyBtn BtnAnimation'>Views Surveys</div></Link>
+            <Link to='/CreateSurvey'><div className='ViewSurveysBtn BtnAnimation'>Create A Survey</div></Link>
           </div>
         </div>
         <div className='imgContainer'><img src="../../survey.png" alt="" /></div>
@@ -37,12 +37,10 @@ function HomePage() {
             </div>
           )
         })}
-      </div> : <Loading/>}
-      <div className='btnWrapper'>
-        <button className='SeeMoreBtn'>
-        <Link to='/Surveys'>See More Survey...<div class="arrow-wrapper"><div class="arrow"></div></div></Link>
-        </button>
-      </div>
+      </div>  : <Loading/>}  
+      <div className='SeeMoreWrapper'>
+          <Link to='/Surveys'><button className='SeeMoreBtn'>See More Survey...</button></Link>
+        </div>
     </div>
   )
 }
