@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
 import '../../styles/SurveyForm.scss'
 import Loading from '../Loading';
+import { db } from '../../data/data';
+import { getFirestore ,addDoc, collection, updateDoc, doc} from "@firebase/firestore";
 //
 export const SURVEY_FORM_ACTIONS = {
   HANDLE_SET_SURVEY : 'HANDLE_SET_SURVEY',
@@ -54,6 +56,7 @@ function SurveyForm() {
       }
     }
   }, [data, isLoading, id]);
+  const updateref = doc(db, 'surveys',id);
   const handleGender = (e)=>{
     dispatch({ type: SURVEY_FORM_ACTIONS.HANDLE_GENDER_CHANGE, payload: e.target.value });
   }
@@ -61,6 +64,7 @@ function SurveyForm() {
     if (state.selectedGender) {
       dispatch({ type: SURVEY_FORM_ACTIONS.HANDLE_SUBMIT });
       console.log('Submitted Survey:', state.survey);
+      updateDoc(updateref,state.survey);
     } else {
       alert('Please select a gender.');
     }
