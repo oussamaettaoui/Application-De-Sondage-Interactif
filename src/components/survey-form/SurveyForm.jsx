@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import Question from './Question'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
 import '../../styles/SurveyForm.scss'
 import Loading from '../Loading';
@@ -44,6 +44,7 @@ const SurveyFormReducer = (state , action)=>{
   }
 }
 function SurveyForm() {
+  const navigate = useNavigate();
   const {data , isLoading} = useFetch();
   const {id} = useParams();
   const [state,dispatch] = useReducer(SurveyFormReducer , {selectedGender: null,temp : 0,survey : null });
@@ -65,6 +66,8 @@ function SurveyForm() {
       dispatch({ type: SURVEY_FORM_ACTIONS.HANDLE_SUBMIT });
       console.log('Submitted Survey:', state.survey);
       updateDoc(updateref,state.survey);
+      navigate("/");
+
     } else {
       alert('Please select a gender.');
     }

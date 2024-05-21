@@ -40,7 +40,7 @@ function SurveyReport() {
         </div>
       </section>
 
-      {filteredData.questions.map((question, index) => (
+      {filteredData.questions && filteredData.questions.map((question, index) => (
         <section key={index}>
           <h2>{question.qs}</h2>
           <div className="question-content">
