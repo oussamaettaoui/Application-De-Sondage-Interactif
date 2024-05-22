@@ -12,7 +12,7 @@ function InputBox(props) {
             {options.map((e,i)=>{
                 return (
                     <div className="InputBoxContainer" key={i}>
-                        <input className='InputBox' type="text" placeholder='Add Option'  onChange={event=>useCreateSurveyDispatch({type : CREATE_SURVEY_ACTIONS.HANDLE_OPTION,payload : {value:event.target.value,qsIndex,opId : e.id}})}/>
+                        <input className='InputBox' value={e.op} type="text" placeholder='Add Option'  onChange={event=>useCreateSurveyDispatch({type : CREATE_SURVEY_ACTIONS.HANDLE_OPTION,payload : {value:event.target.value,qsIndex,opId : e.id}})}/>
                         <FcFullTrash onClick={()=>useCreateSurveyDispatch({type : CREATE_SURVEY_ACTIONS.DELETE_OPTION, payload : {qsIndex, optionId : e.id}})} className="TrashIcon" />
                     </div>
                 )

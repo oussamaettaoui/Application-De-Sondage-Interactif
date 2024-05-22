@@ -12,7 +12,7 @@ function QuestionBox(props) {
   return (
     <div className='QuestionBoxWrapper'>
       <h3 className="QuestionBoxTitle">Question Box</h3>
-      <input type="text" onChange={e=>useCreateSurveyDispatch({type : CREATE_SURVEY_ACTIONS.HANDLE_QUESTION , payload : {value : e.target.value, id : question.id}})} className='QuestionBoxInput' placeholder='Enter Your Question'/>
+      <input type="text" value={question.qs} onChange={e=>useCreateSurveyDispatch({type : CREATE_SURVEY_ACTIONS.HANDLE_QUESTION , payload : {value : e.target.value, id : question.id}})} className='QuestionBoxInput' placeholder='Enter Your Question'/>
       <div className=''>
         <InputBox options={question.options} qsIndex={qsIndex} />
       </div>

@@ -67,6 +67,7 @@ function SurveyForm() {
       console.log('Submitted Survey:', state.survey);
       updateDoc(updateref,state.survey);
       navigate("/");
+      alert("Your survey has been added successfully ! please refresh to see results ...")
 
     } else {
       alert('Please select a gender.');

@@ -7,7 +7,7 @@ const surveyReducer = (state,action)=>{
     switch(action.type){
         case ACTIONS.HANDLE_SET_SURVEYS :
             const sortedSurveys = action.payload.data
-                .sort((a, b) => new Date(b.time) - new Date(a.time))
+                .sort((a, b) => b.time - a.time)
                 .slice(0, 3);
             return {...state , isLoading : action.payload.isLoading,surveys : sortedSurveys};
         default :

@@ -8,7 +8,7 @@ export const SURVEYS_ACTIONS = {
 const surveyReducer = (state,action)=>{
     switch(action.type){
         case SURVEYS_ACTIONS.HANDLE_SET_SURVEYS :
-            const sortedSurveys = action.payload.data
+            const sortedSurveys = action.payload.data.sort((a,b) => b.time - a.time);
             return {...state , isLoading : action.payload.isLoading,surveys : sortedSurveys};
         default :
             throw new Error("Invalid Action");
